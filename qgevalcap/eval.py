@@ -9,8 +9,9 @@ from collections import defaultdict
 from argparse import ArgumentParser
 
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+import importlib
+importlib.reload(sys)
+# sys.setdefaultencoding('utf-8')
 
 class QGEvalCap:
     def __init__(self, gts, res):
@@ -34,10 +35,10 @@ class QGEvalCap:
             score, scores = scorer.compute_score(self.gts, self.res)
             if type(method) == list:
                 for sc, scs, m in zip(score, scores, method):
-                    print "%s: %0.5f"%(m, sc)
+                    print("%s: %0.5f"%(m, sc))
                     output.append(sc)
             else:
-                print "%s: %0.5f"%(method, score)
+                print("%s: %0.5f"%(method, score))
                 output.append(score)
         return output
 
