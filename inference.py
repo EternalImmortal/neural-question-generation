@@ -54,13 +54,13 @@ class BeamSearcher(object):
         self.pred_dir = os.path.join(output_dir, "generated.txt")
         self.golden_dir = os.path.join(output_dir, "golden.txt")
         self.src_file = os.path.join(output_dir, "src.txt")
-        
+
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
         # dummy file for evaluation
         with open(self.src_file, "w") as f:
             for i in range(len(self.data_loader)):
-                f.write(i+"\n")
+                f.write(str(i) + "\n")
 
     @staticmethod
     def sort_hypotheses(hypotheses):
@@ -71,7 +71,7 @@ class BeamSearcher(object):
         golden_fw = open(self.golden_dir, "w")
         for i, eval_data in enumerate(self.data_loader):
             src_seq, ext_src_seq, _, \
-                _, tag_seq, oov_lst = eval_data
+            _, tag_seq, oov_lst = eval_data
 
             best_question = self.beam_search(src_seq, ext_src_seq, tag_seq)
             # discard START  token
