@@ -47,7 +47,7 @@ class BeamSearcher(object):
         self.tok2idx = word2idx
         self.idx2tok = {idx: tok for tok, idx in self.tok2idx.items()}
         self.model = Seq2seq()
-        state_dict = torch.load(model_path)
+        state_dict = torch.load(model_path, map_location=config.device)
         self.model.load_state_dict(state_dict)
         self.model.eval()
         self.moddel = self.model.to(config.device)
