@@ -22,7 +22,7 @@ def make_sent_dataset():
 
 
 def make_para_dataset():
-    embedding_file = "./glove.840B.300d.txt"
+    embedding_file = "../glove.840B.300d.txt"
     embedding = "./embedding.pkl"
     src_word2idx_file = "./word2idx.pkl"
 
