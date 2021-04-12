@@ -16,8 +16,8 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--train", action="store_true")
-    parser.add_argument("--model_path", type=str, default="",
+    parser.add_argument("--model_path", type=str, default="./save/model.pt",
                         help="path to the saved checkpoint")
-    parser.add_argument("--output_dir", type=str)
+    parser.add_argument("--output_dir", type=str, default='./output/')
     args = parser.parse_args()
     main(args)
